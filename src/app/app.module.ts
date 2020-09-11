@@ -6,8 +6,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoModule } from './todo/todo.module';
-import { EffectsModule } from '@ngrx/effects';
+import { TodoModule } from './todo.module';
+import { AppStoreModule } from './app-store/app-store.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,11 +15,11 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     AppRoutingModule,
     TodoModule,
+    AppStoreModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
-    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],
