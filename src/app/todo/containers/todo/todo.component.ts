@@ -16,23 +16,5 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
     this.todos$ = this.todoService.loadAll();
   }
-  create(todo: Partial<Todo>) {
-    const date = new Date();
-    todo.checked = false;
-    todo.createdAt = Math.floor(date.getTime() / 1000);
-    todo.updatedAt = Math.floor(date.getTime() / 1000);
-    this.todoService.create(todo).subscribe((_) => {
-      this.todos$ = this.todoService.loadAll();
-    });
-  }
-  update(todo: Todo) {
-    this.todoService.update(todo).subscribe((_) => {
-      this.todos$ = this.todoService.loadAll();
-    });
-  }
-  remove(id: number) {
-    this.todoService.remove(id).subscribe((_) => {
-      this.todos$ = this.todoService.loadAll();
-    });
-  }
+  create(todo: Todo) {}
 }
