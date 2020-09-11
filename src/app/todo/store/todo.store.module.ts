@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-
-import { AppComponent } from '../../app.component';
 import { EffectsModule } from '@ngrx/effects';
-import { reducer } from './todo.reducer';
-import { todoFeatureKey } from '../../todo/store/todo.reducer';
 import { TodoEffects } from './todo.effect';
 
 @NgModule({
+  declarations: [],
   imports: [
-    StoreModule.forFeature(todoFeatureKey, reducer),
-    EffectsModule.forFeature([TodoEffects]),
+    CommonModule,
+    // StoreModule.forFeature(fromTodo.todoFeatureKey, fromTodo.reducers, { metaReducers: fromTodo.metaReducers }),
+    // EffectsModule.forFeature([TodoEffects])
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class TodoStoreModule {}
