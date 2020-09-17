@@ -18,6 +18,7 @@ import { Todo } from '../../models/todo.model';
 })
 export class TodoListItemComponent implements OnInit {
   @Input() todo: Todo;
+  @Input() loading: boolean;
   @Output() update = new EventEmitter<Todo>();
   @Output() remove = new EventEmitter<number>();
 
@@ -32,7 +33,7 @@ export class TodoListItemComponent implements OnInit {
   }
 
   onSubmit() {
-    const text: string = this.form.get('text').value;
+    const text = this.form.get('text').value;
     const todo = { ...this.todo, text };
     this.update.emit(todo);
   }

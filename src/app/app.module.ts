@@ -6,7 +6,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoModule } from './todo.module';
+import { TodoModule } from './todo/containers/todo/todo.module';
 import { AppStoreModule } from './app-store/app-store.module';
 
 @NgModule({
