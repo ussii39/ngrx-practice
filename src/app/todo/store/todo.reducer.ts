@@ -1,7 +1,17 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { Todo } from '../models/todo.model';
 import * as TodoActions from './todo.action';
-import { initialState, State } from './todo.state';
+
+export interface State {
+  loading: boolean;
+  todos: Todo[];
+  error?: any;
+}
+
+export const initialState: State = {
+  loading: false,
+  todos: [],
+};
 
 export const todoFeatureKey = 'todo';
 
@@ -24,7 +34,7 @@ const todoReducer = createReducer(
     selectedId: id,
   })),
   on(TodoActions.loadSuccess, (state, { todo }) => {
-    const todos = state.todos.some((t) => t.id === todo.id)
+    const todos = state.todos.some((todos) => todos.id === todo.id)
       ? state.todos.map((t) => (t.id === todo.id ? todo : t))
       : [...state.todos, todo];
     return { ...state, loading: false, todos };

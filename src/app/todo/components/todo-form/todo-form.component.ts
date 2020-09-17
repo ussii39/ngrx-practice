@@ -3,6 +3,7 @@ import {
   Output,
   ChangeDetectionStrategy,
   EventEmitter,
+  Input,
 } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
@@ -15,6 +16,7 @@ import { Todo } from '../../models/todo.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoFormComponent {
+  @Input() loading: boolean;
   @Output() create = new EventEmitter<Partial<Todo>>();
 
   form = this.fb.group({

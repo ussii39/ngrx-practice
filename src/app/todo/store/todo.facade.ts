@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { TodoStoreModule } from './todo.store.module';
 import { State } from './todo.state';
-import * as Actions from './todo.action';
+import * as TodoActions from './todo.action';
 import * as Selectors from './todo.selector';
 import { Todo } from '../models/todo.model';
 
@@ -15,7 +15,23 @@ export class TodoFacade {
 
   constructor(private store: Store<State>) {}
 
-  createTodo(todo: Todo) {
-    this.store.dispatch(Actions.create({ todo }));
+  loadAll() {
+    this.store.dispatch(TodoActions.loadAll());
+  }
+
+  load(id: number) {
+    this.store.dispatch(TodoActions.load({ id }));
+  }
+
+  create(todo: Partial<Todo>) {
+    this.store.dispatch(TodoActions.create({ todo }));
+  }
+
+  update(todo: Todo) {
+    this.store.dispatch(TodoActions.update({ todo }));
+  }
+
+  remove(id: number) {
+    this.store.dispatch(TodoActions.remove({ id }));
   }
 }
